@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CarInventory.Models.Car>
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-6">
+        <h1 class="text-info"> Car Inventory </h1>
+    </div>
+    
+    <div>
+        <table class="table table-striped border">
+            <tr class="table-info">
+                <th>@Html.DisplayNameFor(m=>m.Brand)</th>
+                <th>@Html.DisplayNameFor(m=>m.Model)</th>
+                <th>@Html.DisplayNameFor(m=>m.Year)<th>
+                <th>@Html.DisplayNameFor(m=>m.Price)</th>
+                <th>@Html.DisplayNameFor(m=>m.New)</th>
+            </tr>
+            @foreach(var item in Model)
+            {
+                 <tr>
+                     <td>@Html.DisplayFor(m=>item.Brand)</td>
+                     <td>@Html.DisplayFor(m=>item.Model)</td>
+                     <td>@Html.DisplayFor(m=>item.Year)</td>
+                     <td>@Html.DisplayFor(m=>item.Price)</td>
+                     <td>@Html.DisplayFor(m=>item.New)</td>
+                     <td>
+                         <a type="button" class="btn btn-primary" href="@Url.Action("Delete","Home",new{id=item.Id})">Delete</a>
+                     </td>
+                 </tr>   
+            }
+        </table>
+    </div>
+    <div class="col-12 text-center">
+        <a class="btn btn-info" asp-action="Create">Add New Car </a>
+    </div>
+</div>
